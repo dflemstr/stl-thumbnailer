@@ -15,7 +15,7 @@ def main():
     size = sys.argv[3]
 
     with tempfile.NamedTemporaryFile() as f:
-        f.write(f'import("{input_path}");')
+        f.write(f'import("{input_path}");\n'.encode('utf-8'))
         f.flush()
         subprocess.call(["openscad", "-o", output_path, f"--imgsize={size},{size}", f.name])
 
